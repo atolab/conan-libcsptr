@@ -1,28 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "csptr/smart_ptr.h"
+#include "csptr/smalloc.h"
 
 static int result = EXIT_FAILURE;
 
 static void
-cleanup(void *ptr, void *meta)
+destructor(void *ptr, void *meta)
 {
-    printf("cleanup\n");
-    result = EXIT_SUCCESS;
-}
+    (void)ptr;
+    (void)meta;
 
-static void
-test(void)
-{
-    printf("test\n");
-    smart int *i = unique_ptr(int, 42, cleanup);
+    result = EXIT_SUCCESS;
 }
 
 int
 main(int argc, char *argv[])
 {
-    printf("main\n");
-    test();
+    int *foobar = smalloc(.size = sizeof(int), .dtor = &destructor);
+    sfree(foobar);
     return result;
 }
