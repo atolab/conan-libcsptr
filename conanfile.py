@@ -9,7 +9,7 @@ class LibcsptrConan(ConanFile):
     name = "libcsptr"
     version = "2.0.4"
     description = "Smart pointers for the (GNU) C programming language"
-    url = "https://github.com/k0ekk0ek/conan-libcsptr"
+    url = "https://github.com/atolab/conan-libcsptr"
     homepage = "https://github.com/Snaipe/libcsptr"
     license = "MIT"
     exports = ["LICENSE.md"]
